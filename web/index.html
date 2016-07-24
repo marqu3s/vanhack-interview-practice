@@ -1,0 +1,120 @@
+<html>
+<head>
+	<title>Vanhack Interview Practice</title>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row" id="login">
+			<div class="col-xs-12 col-md-4 col-md-push-4">
+				<p class="text-center">Enter your name</p>
+				<input type="text" id="name" name="name" class="form-control" value="joao">
+				<button id="btn-join" class="btn btn-primary btn-block">Join Interview Practice</button>
+			</div>
+		</div>
+
+		<div class="row" id="room" style="display: none">
+			<div class="col-xs-12 col-md-4 col-md-push-4">
+				<div id="membersList"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!-- jQuery 2.2.4 -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<!-- Socket.io client -->
+<script src="https://cdn.socket.io/socket.io-1.4.8.js"></script>
+
+<!-- React files -->
+<script src="https://fb.me/react-with-addons-15.2.0.js"></script>
+<script src="https://fb.me/react-dom-15.2.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var socket = io('http://localhost:8080');
+
+		socket.on('msg', function(data) {
+			switch (data.action) {
+				case 'info':
+					console.log(data.data);
+					break;
+				case 'showRoom':
+					if (data.data) {
+						$('#room').fadeIn();
+						$('#login').fadeOut();
+					} else {
+						$('#room').fadeOut();
+						$('#login').fadeIn();
+					}
+					break;
+			}
+		});
+
+		$('#btn-join').click(function (e) {
+			socket.emit('join', {name: $('#name').val()});
+		});
+	});
+</script>
+
+<script type="text/babel">
+	// REACT -------------------------------------------------
+	var List = React.createClass({
+		getInitialState: function() {
+			return {data: [
+				{"id": "1", "name": "Pete Hunt"},
+  				{"id": "2", "name": "Jordan Walke"}
+			]};
+		},
+		componentDidMount: function() {
+			$.ajax({
+				url: this.props.url,
+				dataType: 'json',
+				cache: false,
+				success: function(data) {
+					this.setState({data: data});
+				}.bind(this),
+				error: function(xhr, status, err) {
+					console.error(this.props.url, status, err.toString());
+				}.bind(this)
+			});
+		},
+		render: function() {
+			var membersNodes = this.state.data.map(function(member) {
+				return (
+					<li key={member.id} className="list-group-item">{member.name}</li>
+				);
+			});
+			return (
+					<div>
+					 <h1 className="text-center">Members in the room</h1>
+					 <ul className="list-group">
+					 	{membersNodes}
+					 </ul>
+				    </div>
+			);
+		}
+	});
+
+	ReactDOM.render(
+		<List url="/getMembers" />,
+		document.getElementById('membersList')
+	);
+</script>
+
+</html>

@@ -14,3 +14,8 @@ The backend runs a node server to control who is in the room and update connecte
 ## Database
 
 A database is used to control the order of the members who would like to talk in the practice.
+The database is mongodb. The data path is ./data/db.
+To start the server, run:
+
+`mongod --dbpath ./data/db`
+
