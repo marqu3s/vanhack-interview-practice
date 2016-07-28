@@ -72,49 +72,6 @@
 	});
 </script>
 
-<script type="text/babel">
-	// REACT -------------------------------------------------
-	var List = React.createClass({
-		getInitialState: function() {
-			return {data: [
-				{"id": "1", "name": "Pete Hunt"},
-  				{"id": "2", "name": "Jordan Walke"}
-			]};
-		},
-		componentDidMount: function() {
-			$.ajax({
-				url: this.props.url,
-				dataType: 'json',
-				cache: false,
-				success: function(data) {
-					this.setState({data: data});
-				}.bind(this),
-				error: function(xhr, status, err) {
-					console.error(this.props.url, status, err.toString());
-				}.bind(this)
-			});
-		},
-		render: function() {
-			var membersNodes = this.state.data.map(function(member) {
-				return (
-					<li key={member.id} className="list-group-item">{member.name}</li>
-				);
-			});
-			return (
-					<div>
-					 <h1 className="text-center">Members in the room</h1>
-					 <ul className="list-group">
-					 	{membersNodes}
-					 </ul>
-				    </div>
-			);
-		}
-	});
-
-	ReactDOM.render(
-		<List url="/getMembers" />,
-		document.getElementById('membersList')
-	);
-</script>
+<script type="text/babel" src="/react.jsx"></script>
 
 </html>

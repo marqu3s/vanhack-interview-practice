@@ -9,9 +9,7 @@ var sendFile = function (path, response) {
     if (path === '/')
         path = 'index.html';
     if (path == '/getMembers') {
-        ConnectedMember.find().lean().exec(function (err, models) {
-            return response.end(JSON.stringify(models));
-        });
+        getConnectedMembers(response);
     }
     else {
         path = '/../web/' + path;
@@ -29,8 +27,27 @@ var sendFile = function (path, response) {
         });
     }
 };
+var getToday = function () {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var day = ('0' + date.getDate()).slice(-2);
+    var today = year + '-' + month + '-' + day;
+    return today;
+};
+var getConnectedMembers = function (response) {
+    var today = getToday();
+    var isoDateFrom = today + 'T00:00:00.000Z';
+    var isoDateTo = today + 'T23:59:59.999Z';
+    ConnectedMember.find({ connected_at: { $gte: isoDateFrom, $lte: isoDateTo } }).lean().exec(function (err, models) {
+        return response.end(JSON.stringify(models));
+    });
+};
 var joinMember = function (name) {
-    ConnectedMember.findOne({ name: name }, function (err, model) {
+    var today = getToday();
+    var isoDateFrom = today + 'T00:00:00.000Z';
+    var isoDateTo = today + 'T23:59:59.999Z';
+    ConnectedMember.findOne({ name: name, connected_at: { $gte: isoDateFrom, $lte: isoDateTo } }, function (err, model) {
         if (err) {
             console.log(err);
         }
@@ -98,7 +115,10 @@ socket.on('connection', function (client) {
     client.on('join', function (data) {
         clients[client.id] = { 'name': data.name }; // maps a socket id to a user.
         joinMember(data.name);
-        socket.emit('msg', { action: 'showRoom', data: true });
+        // Message just the connected user.
+        client.emit('msg', { action: 'showRoom', data: true });
+        // Message all the other users.
+        client.broadcast.emit('msg', { action: 'info', data: data.name + ' has connected.' });
         // MongoClient.connect(mongodbUrl, function(err, db) {
         // assert.equal(null, err);
         // console.log("Connected correctly to mongodb server.");
