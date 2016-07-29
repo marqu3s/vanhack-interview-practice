@@ -43,8 +43,8 @@ var getConnectedMembers = function (response) {
         return response.end(JSON.stringify(models));
     });
 };
-var joinMember = function (name) {
-    var today = getToday();
+var joinMember = function (name, date) {
+    var today = date.substring(0, 10);
     var isoDateFrom = today + 'T00:00:00.000Z';
     var isoDateTo = today + 'T23:59:59.999Z';
     ConnectedMember.findOne({ name: name, connected_at: { $gte: isoDateFrom, $lte: isoDateTo } }, function (err, model) {
@@ -59,7 +59,7 @@ var joinMember = function (name) {
                 }
                 else {
                     var order = count + 1;
-                    var model = new ConnectedMember({ name: name, order: order, connected_at: new Date() });
+                    var model = new ConnectedMember({ name: name, order: order, connected_at: date });
                     model.save(function () {
                         if (err) {
                             console.log(err);
@@ -114,7 +114,7 @@ socket.on('connection', function (client) {
     client.emit('msg', { action: 'info', data: 'You are connected. (ID: ' + client.id + ')' });
     client.on('join', function (data) {
         clients[client.id] = { 'name': data.name }; // maps a socket id to a user.
-        joinMember(data.name);
+        joinMember(data.name, data.date);
         // Message just the connected user.
         client.emit('msg', { action: 'showRoom', data: true });
         // Message all the other users.

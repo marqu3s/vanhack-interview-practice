@@ -45,8 +45,8 @@ var getConnectedMembers = function (response) {
 	});
 }
 
-var joinMember = function (name) {
-	let today = getToday();
+var joinMember = function (name, date) {
+	let today = date.substring(0, 10);
 	let isoDateFrom = today + 'T00:00:00.000Z';
 	let isoDateTo   = today + 'T23:59:59.999Z';
 
@@ -60,7 +60,7 @@ var joinMember = function (name) {
 					console.log(err);
 				} else {
 					var order = count + 1;
-					var model = new ConnectedMember({name: name, order: order, connected_at: new Date()});
+					var model = new ConnectedMember({name: name, order: order, connected_at: date});
 					model.save(function () {
 						if (err) {
 							console.log(err);
@@ -124,7 +124,7 @@ socket.on('connection', function (client) {
 
 	client.on('join', function (data) {
         clients[client.id] = {'name': data.name}; // maps a socket id to a user.
-		joinMember(data.name);
+		joinMember(data.name, data.date);
 
 		// Message just the connected user.
 		client.emit('msg', {action: 'showRoom', data: true});

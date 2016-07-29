@@ -23,6 +23,9 @@ var List = React.createClass({
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
+        socket.onmessage = function(e) {
+            console.log(e);
+        }
     },
     render: function() {
         return (
