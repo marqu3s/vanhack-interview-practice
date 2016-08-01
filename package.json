@@ -1,0 +1,18 @@
+{
+  "name": "vanhack-interview-practice-controller",
+  "version": "1.0.0",
+  "description": "Vanhack Interview Practice Controller",
+  "author": "Joao Marques<joao@jjmf.com>",
+  "main": "src/server/server.js",
+  "scripts": {
+    "start": "node src/server/server.js"
+  },
+  "dependencies": {
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.8.2"
+  }
+}

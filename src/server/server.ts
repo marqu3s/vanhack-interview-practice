@@ -1,4 +1,4 @@
-/// <reference path="../typings/index.d.ts" />
+/// <reference path="../../typings/index.d.ts" />
 
 /**
  * Tutorials used:
@@ -6,13 +6,14 @@
  * http://danielnill.com/nodejs-tutorial-with-socketio/
  */
 
+
 // Functions
-var sendFile = function (path, response) {
+var sendFile = function (path:string, response:response) {
 	if (path === '/') path = 'index.html';
 	if (path == '/getMembers') {
 		getConnectedMembers(response);
 	} else {
-		path = '/../web/' + path;
+		path = '/../browser/' + path;
 		fs.readFile(__dirname + path, function (error, data) {
 			if (error) {
 				response.writeHead(404);
@@ -45,7 +46,7 @@ var getConnectedMembers = function (response) {
 	});
 }
 
-var joinMember = function (name, date) {
+var joinMember = function (name:string, date:string) {
 	let today = date.substring(0, 10);
 	let isoDateFrom = today + 'T00:00:00.000Z';
 	let isoDateTo   = today + 'T23:59:59.999Z';
@@ -191,7 +192,7 @@ socket.on('connection', function (client) {
 	//to broadcast information globally:
 	//io.sockets.in('room1').emit('function', 'data1', 'data2');
 
-	client.on('message-from-php', function(data) {
+	/*client.on('message-from-php', function(data) {
 		data = JSON.parse(data);
 		console.log('');
         console.log('');
@@ -205,7 +206,7 @@ socket.on('connection', function (client) {
             console.log(entry);
         }
 		// client.broadcast.emit('msg', data);
-	});
+	});*
 
 	client.on('disconnect', function(){
     	console.log('A user disconnected.');
