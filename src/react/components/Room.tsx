@@ -5,12 +5,14 @@ interface Member {
     _id: string,
     name: string
 }
-
 interface RoomProps {
     url: string
 }
+interface RoomState {
+    data: [Member]
+}
 
-export class Room extends React.Component <RoomProps, {data: [Member]}> {
+export class Room extends React.Component <RoomProps, RoomState> {
     constructor (props: RoomProps) {
         super(props);
         //this.handleCommentSubmit = this.handleCommentSubmit.bind(this)

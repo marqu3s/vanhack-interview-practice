@@ -47,8 +47,8 @@
 	"use strict";
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(2);
-	var Room_1 = __webpack_require__(3);
-	ReactDOM.render(React.createElement(Room_1.Room, {url: "/getMembers"}), document.getElementById("example"));
+	var JoinForm_1 = __webpack_require__(5);
+	ReactDOM.render(React.createElement(JoinForm_1.JoinForm, null), document.getElementById("content"));
 
 
 /***/ },
@@ -64,7 +64,9 @@
 	module.exports = ReactDOM;
 
 /***/ },
-/* 3 */
+/* 3 */,
+/* 4 */,
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -74,71 +76,20 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var MemberListItem_1 = __webpack_require__(4);
-	var Room = (function (_super) {
-	    __extends(Room, _super);
-	    function Room(props) {
-	        _super.call(this, props);
-	        //this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
-	        this.state = {
-	            data: [
-	                { "_id": "1", "name": "Pete Hunt" },
-	                { "_id": "2", "name": "Jordan Walke" }
-	            ]
-	        };
-	    }
-	    Room.prototype.componentDidMount = function () {
-	        // $.ajax({
-	        //     url: this.props.url,
-	        //     dataType: 'json',
-	        //     cache: false,
-	        //     success: function(data) {
-	        //         this.setState({data: data});
-	        //     }.bind(this),
-	        //     error: function(xhr, status, err) {
-	        //         console.error(this.props.url, status, err.toString());
-	        //     }.bind(this)
-	        // });
-	        // socket.onmessage = function(e) {
-	        //     console.log(e);
-	        // }
-	    };
-	    Room.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement("h1", {className: "text-center"}, "Members in the room"), React.createElement("ul", {className: "list-group"}, this.state.data.map(function (member) {
-	            return React.createElement(MemberListItem_1.MemberListItem, {key: member._id, text: member.name});
-	        }))));
-	    };
-	    return Room;
-	}(React.Component));
-	exports.Room = Room;
-	// ReactDOM.render(
-	//     <Room url="/getMembers" />,
-	//     document.getElementById('membersList')
-	// ); 
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
-	var React = __webpack_require__(1);
-	var MemberListItem = (function (_super) {
-	    __extends(MemberListItem, _super);
-	    function MemberListItem() {
+	var JoinForm = (function (_super) {
+	    __extends(JoinForm, _super);
+	    function JoinForm() {
 	        _super.apply(this, arguments);
 	    }
-	    MemberListItem.prototype.render = function () {
-	        return (React.createElement("li", {className: "list-group-item"}, this.props.text));
+	    JoinForm.prototype.handleJoin = function (e) {
+	        console.log(e);
 	    };
-	    return MemberListItem;
+	    JoinForm.prototype.render = function () {
+	        return (React.createElement("div", null, React.createElement("p", {className: "text-center"}, "Enter your name"), React.createElement("input", {type: "text", id: "name", name: "name", className: "form-control", value: "joao"}), React.createElement("button", {id: "btn-join", className: "btn btn-primary btn-block", onClick: this.handleJoin}, "Join Interview Practice")));
+	    };
+	    return JoinForm;
 	}(React.Component));
-	exports.MemberListItem = MemberListItem;
+	exports.JoinForm = JoinForm;
 
 
 /***/ }

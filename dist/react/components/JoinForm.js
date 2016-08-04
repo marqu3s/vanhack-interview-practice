@@ -19,8 +19,4 @@ var JoinForm = (function (_super) {
     return JoinForm;
 }(React.Component));
 exports.JoinForm = JoinForm;
-// ReactDOM.render(
-//     <JoinForm />,
-//     document.getElementById('joinForm')
-// ); 
 //# sourceMappingURL=JoinForm.js.map

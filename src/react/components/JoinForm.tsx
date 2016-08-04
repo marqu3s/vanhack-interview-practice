@@ -17,8 +17,3 @@ export class JoinForm extends React.Component<{}, {}> {
         );
     }
 }
-
-// ReactDOM.render(
-//     <JoinForm />,
-//     document.getElementById('joinForm')
-// );

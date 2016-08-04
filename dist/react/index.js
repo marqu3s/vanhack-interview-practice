@@ -1,6 +1,6 @@
 "use strict";
 var React = require("react");
 var ReactDOM = require("react-dom");
-var Room_1 = require("./components/Room");
-ReactDOM.render(React.createElement(Room_1.Room, {url: "/getMembers"}), document.getElementById("example"));
+var JoinForm_1 = require("./components/JoinForm");
+ReactDOM.render(React.createElement(JoinForm_1.JoinForm, null), document.getElementById("content"));
 //# sourceMappingURL=index.js.map
