@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Room } from "./components/Room";
+import { Hello } from "./components/Hello";
 
 ReactDOM.render(
-    <Room url="/getMembers" />,
+    <Hello compiler="TypeScript" framework="React DOM" />,
     document.getElementById("example")
 );

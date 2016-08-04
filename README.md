@@ -19,3 +19,6 @@ To start the server, run:
 
 `mongod --dbpath ./data/db`
 
+### Resources
+
+https://www.typescriptlang.org/docs/handbook/react-&-webpack.html

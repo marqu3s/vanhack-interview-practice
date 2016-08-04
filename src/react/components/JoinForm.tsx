@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react'
+import * as React from "react";
 
-class JoinForm extends React.Component {
+export class JoinForm extends React.Component {
     handleJoin (e) {
         console.log(e);
     }
@@ -18,7 +18,7 @@ class JoinForm extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <JoinForm />,
-    document.getElementById('joinForm')
-);
+// ReactDOM.render(
+//     <JoinForm />,
+//     document.getElementById('joinForm')
+// );
