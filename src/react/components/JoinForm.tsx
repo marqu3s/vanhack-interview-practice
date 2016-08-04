@@ -1,7 +1,7 @@
 import * as React from "react";
 
-export class JoinForm extends React.Component {
-    handleJoin (e) {
+export class JoinForm extends React.Component<{}, {}> {
+    handleJoin (e: any) {
         console.log(e);
     }
     

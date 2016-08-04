@@ -47,7 +47,7 @@
 	"use strict";
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(2);
-	var Room_1 = __webpack_require__(4);
+	var Room_1 = __webpack_require__(3);
 	ReactDOM.render(React.createElement(Room_1.Room, {url: "/getMembers"}), document.getElementById("example"));
 
 
@@ -64,8 +64,7 @@
 	module.exports = ReactDOM;
 
 /***/ },
-/* 3 */,
-/* 4 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -75,14 +74,14 @@
 	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 	};
 	var React = __webpack_require__(1);
-	var MemberListItem_1 = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"MemberListItem\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var MemberListItem_1 = __webpack_require__(4);
 	var Room = (function (_super) {
 	    __extends(Room, _super);
 	    function Room(props) {
 	        _super.call(this, props);
 	        //this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
 	        this.state = {
-	            'data': [
+	            data: [
 	                { "_id": "1", "name": "Pete Hunt" },
 	                { "_id": "2", "name": "Jordan Walke" }
 	            ]
@@ -105,9 +104,9 @@
 	        // }
 	    };
 	    Room.prototype.render = function () {
-	        return (React.createElement("div", null, React.createElement("h1", {className: "text-center"}, "Members in the room"), "/*", React.createElement("ul", {className: "list-group"}, this.state.data.map(function (member) {
+	        return (React.createElement("div", null, React.createElement("h1", {className: "text-center"}, "Members in the room"), React.createElement("ul", {className: "list-group"}, this.state.data.map(function (member) {
 	            return React.createElement(MemberListItem_1.MemberListItem, {key: member._id, text: member.name});
-	        })), "*/"));
+	        }))));
 	    };
 	    return Room;
 	}(React.Component));
@@ -116,6 +115,30 @@
 	//     <Room url="/getMembers" />,
 	//     document.getElementById('membersList')
 	// ); 
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __extends = (this && this.__extends) || function (d, b) {
+	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+	    function __() { this.constructor = d; }
+	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+	var React = __webpack_require__(1);
+	var MemberListItem = (function (_super) {
+	    __extends(MemberListItem, _super);
+	    function MemberListItem() {
+	        _super.apply(this, arguments);
+	    }
+	    MemberListItem.prototype.render = function () {
+	        return (React.createElement("li", {className: "list-group-item"}, this.props.text));
+	    };
+	    return MemberListItem;
+	}(React.Component));
+	exports.MemberListItem = MemberListItem;
 
 
 /***/ }

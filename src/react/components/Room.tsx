@@ -1,14 +1,21 @@
 import * as React from "react";
-import { MemberListItem } from "MemberListItem";
+import { MemberListItem } from "./MemberListItem";
 
-export interface RoomProps { url: string; }
+interface Member {
+    _id: string,
+    name: string
+}
 
-export class Room extends React.Component <RoomProps, {}> {
+interface RoomProps {
+    url: string
+}
+
+export class Room extends React.Component <RoomProps, {data: [Member]}> {
     constructor (props: RoomProps) {
         super(props);
         //this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
         this.state = {
-            'data': [
+            data: [
                 {"_id": "1", "name": "Pete Hunt"},
                 {"_id": "2", "name": "Jordan Walke"}
             ]
@@ -36,11 +43,11 @@ export class Room extends React.Component <RoomProps, {}> {
         return (
             <div>
                 <h1 className="text-center">Members in the room</h1>
-                /*<ul className="list-group">
+                <ul className="list-group">
                  {this.state.data.map(function(member) {
                      return <MemberListItem key={member._id} text={member.name} />;
                  })}
-                </ul>*/
+                </ul>
             </div>
         );
     }

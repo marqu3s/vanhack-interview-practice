@@ -206,7 +206,7 @@ socket.on('connection', function (client) {
             console.log(entry);
         }
 		// client.broadcast.emit('msg', data);
-	});*
+	});*/
 
 	client.on('disconnect', function(){
     	console.log('A user disconnected.');

@@ -5,15 +5,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var React = require("react");
-var Hello = (function (_super) {
-    __extends(Hello, _super);
-    function Hello() {
+var MemberListItem = (function (_super) {
+    __extends(MemberListItem, _super);
+    function MemberListItem() {
         _super.apply(this, arguments);
     }
-    Hello.prototype.render = function () {
-        return React.createElement("h1", null, "Hello from ", this.props.compiler, " and ", this.props.framework, "!");
+    MemberListItem.prototype.render = function () {
+        return (React.createElement("li", {className: "list-group-item"}, this.props.text));
     };
-    return Hello;
+    return MemberListItem;
 }(React.Component));
-exports.Hello = Hello;
-//# sourceMappingURL=Hello.js.map
+exports.MemberListItem = MemberListItem;
+//# sourceMappingURL=MemberListItem.js.map
