@@ -1,7 +1,17 @@
 {
   "dependencies": {},
   "globalDependencies": {
+    "mongodb": "registry:dt/mongodb#2.1.0+20160602142941",
+    "mongoose": "registry:dt/mongoose#4.5.4+20160804041818",
+    "mongoose-promise": "registry:dt/mongoose-promise#4.5.4+20160720003345",
+    "mpromise": "registry:dt/mpromise#0.5.4+20160316155526",
+    "node": "registry:dt/node#6.0.0+20160802155038",
+    "promise": "registry:dt/promise#7.1.1+20160602154553",
     "react": "registry:dt/react#0.14.0+20160720060442",
-    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-router": "registry:dt/react-router#2.0.0+20160621215300",
+    "react-router/history": "registry:dt/react-router/history#2.0.0+20160608102730",
+    "socket.io": "registry:dt/socket.io#1.4.4+20160317120654",
+    "socket.io-client": "registry:dt/socket.io-client#1.4.4+20160317120654"
   }
 }

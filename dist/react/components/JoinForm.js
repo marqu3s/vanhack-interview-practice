@@ -14,7 +14,7 @@ var JoinForm = (function (_super) {
         console.log(e);
     };
     JoinForm.prototype.render = function () {
-        return (React.createElement("div", null, React.createElement("p", {className: "text-center"}, "Enter your name"), React.createElement("input", {type: "text", id: "name", name: "name", className: "form-control", value: "joao"}), React.createElement("button", {id: "btn-join", className: "btn btn-primary btn-block", onClick: this.handleJoin}, "Join Interview Practice")));
+        return (React.createElement("div", null, React.createElement("h2", {className: "text-center"}, "Enter your name"), React.createElement("input", {type: "text", id: "name", name: "name", className: "form-control", defaultValue: "joao"}), React.createElement("button", {id: "btn-join", className: "btn btn-primary btn-block", onClick: this.handleJoin}, "Join Interview Practice")));
     };
     return JoinForm;
 }(React.Component));

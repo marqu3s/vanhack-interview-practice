@@ -10,7 +10,6 @@ var Room = (function (_super) {
     __extends(Room, _super);
     function Room(props) {
         _super.call(this, props);
-        //this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
         this.state = {
             data: [
                 { "_id": "1", "name": "Pete Hunt" },
@@ -35,15 +34,11 @@ var Room = (function (_super) {
         // }
     };
     Room.prototype.render = function () {
-        return (React.createElement("div", null, React.createElement("h1", {className: "text-center"}, "Members in the room"), React.createElement("ul", {className: "list-group"}, this.state.data.map(function (member) {
+        return (React.createElement("div", null, React.createElement("h2", {className: "text-center"}, "Members in the room"), React.createElement("ul", {className: "list-group"}, this.state.data.map(function (member) {
             return React.createElement(MemberListItem_1.MemberListItem, {key: member._id, text: member.name});
         }))));
     };
     return Room;
 }(React.Component));
 exports.Room = Room;
-// ReactDOM.render(
-//     <Room url="/getMembers" />,
-//     document.getElementById('membersList')
-// ); 
 //# sourceMappingURL=Room.js.map

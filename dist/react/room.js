@@ -2,5 +2,5 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 var Room_1 = require("./components/Room");
-ReactDOM.render(React.createElement(Room_1.Room, {url: "/getMembers"}), document.getElementById("example"));
+ReactDOM.render(React.createElement(Room_1.Room, {url: "/getMembers"}), document.getElementById("react-app"));
 //# sourceMappingURL=room.js.map

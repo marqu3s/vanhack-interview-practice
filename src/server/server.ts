@@ -8,7 +8,7 @@
 
 
 // Functions
-var sendFile = function (path:string, response:response) {
+var sendFile = function (path: string, response: any) {
 	if (path === '/') path = 'index.html';
 	if (path == '/getMembers') {
 		getConnectedMembers(response);
@@ -77,13 +77,15 @@ var joinMember = function (name:string, date:string) {
 	});
 }
 
+import * as io from 'socket.io';
+
 // Requires
 const port = 8080;
 const mongodbUrl = 'mongodb://localhost:27017/vip';
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const io = require('socket.io');
+//const io = require('socket.io');
 const mongoose = require('mongoose');
 mongoose.connect(mongodbUrl);
 

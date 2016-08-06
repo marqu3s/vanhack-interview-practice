@@ -13,7 +13,6 @@
     "exclude": [
         "dist",
         "node_modules",
-        "src/server/node_modules",
         "src/server/server.ts",
         "typings/globals"
     ]

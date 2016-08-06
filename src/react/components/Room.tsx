@@ -15,7 +15,6 @@ interface RoomState {
 export class Room extends React.Component <RoomProps, RoomState> {
     constructor (props: RoomProps) {
         super(props);
-        //this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
         this.state = {
             data: [
                 {"_id": "1", "name": "Pete Hunt"},
@@ -44,7 +43,7 @@ export class Room extends React.Component <RoomProps, RoomState> {
     render () {
         return (
             <div>
-                <h1 className="text-center">Members in the room</h1>
+                <h2 className="text-center">Members in the room</h2>
                 <ul className="list-group">
                  {this.state.data.map(function(member) {
                      return <MemberListItem key={member._id} text={member.name} />;
@@ -54,8 +53,3 @@ export class Room extends React.Component <RoomProps, RoomState> {
         );
     }
 }
-
-// ReactDOM.render(
-//     <Room url="/getMembers" />,
-//     document.getElementById('membersList')
-// );
